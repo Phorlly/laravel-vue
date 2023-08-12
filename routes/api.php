@@ -17,10 +17,13 @@ use Illuminate\Support\Facades\Route;
 //});
 
 //=======================all route api testing===============================//
-Route::group(['prefix' => 'v1'], function () {
-    Route::apiResource('skills', App\Http\Controllers\Api\V1\SkillController::class);
-    Route::apiResource('customers', App\Http\Controllers\Api\V1\CustomerController::class);
+Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\Api\V1'], function () {
+    Route::apiResource('/skills', SkillsController::class);
+    Route::apiResource('/customers', CustomersController::class);
+    Route::apiResource('/categories',CategoriesController::class);
+    Route::apiResource('/products', ProductsController::class);
 });
+
 
 
 
