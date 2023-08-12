@@ -228,6 +228,7 @@
 <script>
 import $ from "jquery";
 import Form from "vform";
+import moment from "moment";
 
 export default {
     components: { DataTable},
