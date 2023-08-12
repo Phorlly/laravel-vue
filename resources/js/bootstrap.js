@@ -7,7 +7,19 @@ import 'bootstrap';
  */
 
 import axios from 'axios';
+import Form from "vform";
+import {formatDistanceToNow} from "date-fns";
+import DataTable from "datatables.net-vue3";
+import moment from "moment";
+import $ from "jquery";
+
+window.Form = Form;
 window.axios = axios;
+window.$ = $;
+window.DataTable = DataTable;
+window.moment = moment;
+window.formatDistanceToNow = formatDistanceToNow;
+
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 

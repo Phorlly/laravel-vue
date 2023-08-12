@@ -1,7 +1,7 @@
 <x-laravel-ui-adminlte::adminlte-layout>
-{{--hold-transition sidebar-mini layout-fixed--}}
+
     <body class="sidebar-mini layout-navbar-fixed layout-footer-fixed layout-fixed">
-        <div class="wrapper" id="app">
+        <div class="wrapper" >
             <!-- Main Header -->
             <nav class="main-header navbar navbar-expand navbar-white navbar-light">
                 <!-- Left navbar links -->

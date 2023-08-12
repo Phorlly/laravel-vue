@@ -10,7 +10,7 @@ use App\Models\Skill;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class SkillController extends Controller
+class SkillsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +19,7 @@ class SkillController extends Controller
     {
         //get data
         $data = Skill::get();
-        return response()->json([
+        return response([
             "data" => $data,
             "message" =>"Successfully Query  Data .!",
             "status_code" => 200
@@ -33,7 +33,7 @@ class SkillController extends Controller
     {
         //post data
        $data = Skill::create($request->validated());
-        return response()->json([
+        return response([
             "data" => $data,
             "message" =>"Successfully Created .!",
             "status_code" => 200
@@ -52,7 +52,7 @@ class SkillController extends Controller
             $data->first();
         }
 
-        return response()->json([
+        return response([
             "data" => $data,
             "status_code" => 200,
              "message" => "Successfully Get Data by id"
@@ -71,7 +71,7 @@ class SkillController extends Controller
             $data->update($request->validated());
         }
 
-        return response()->json([
+        return response([
             "data" => $data,
             "message" => "Successfully Updated.!",
             "status_code" => 200
@@ -90,7 +90,7 @@ class SkillController extends Controller
             $data->delete();
         }
 
-        return response()->json([
+        return response([
             "message" => "Successfully Deleted.!",
             "status_code" => 200
         ]);
