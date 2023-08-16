@@ -14,7 +14,7 @@ class CategoriesController extends Controller
     public function index()
     {
         // desc
-        return Category::orderBy('created_at', 'asc')->get();
+        return Category::orderBy('created_at', 'desc')->get();
     }
 
     /**

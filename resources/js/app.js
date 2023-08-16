@@ -4,6 +4,8 @@ import 'admin-lte';
 import {createApp} from "vue/dist/vue.esm-bundler.js";
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+import Multiselect from 'vue-multiselect';
+import 'vue-multiselect/dist/vue-multiselect.min.css';
 import DataTable from 'datatables.net-vue3';
 import DataTableLib from "datatables.net-bs4";
 import 'datatables.net-buttons-bs4';
@@ -29,9 +31,10 @@ const app = createApp({
         CategoryComponent,
         CustomerComponent,
         ProductComponent,
-
+        Multiselect
     }
 });
-
+// app.component('multiselect', )
 app.use(VueSweetalert2);
+// app.use(Multiselect);
 app.mount("#app");

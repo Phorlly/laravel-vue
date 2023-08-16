@@ -13,7 +13,7 @@ class CustomersController extends Controller
      */
     public function index()
     {
-        return Customer::orderBy('created_at', 'asc')->get();
+        return Customer::orderBy('created_at', 'desc')->get();
     }
 
     /**
@@ -21,7 +21,7 @@ class CustomersController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $this->validate($request, [
             "name" => "required|string|max:100",
             "phone" => "required|string|max:20",
@@ -77,7 +77,7 @@ class CustomersController extends Controller
      */
     public function destroy(string $id)
     {
-        
+
         Customer::findOrFail($id)->delete();
 
         return response([

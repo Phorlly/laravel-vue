@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -16,7 +17,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        return Product::orderBy('created_at', 'asc')->get();
+        return Product::with(['category'])->orderBy('created_at', 'desc')->get();
     }
 
     /**
@@ -28,8 +29,7 @@ class ProductsController extends Controller
             'name' => 'required|string|max:255',
             'name_kh' => 'required|string|max:255',
             'price' => 'required|numeric',
-            'photo' => 'required'
-//            'required|image|mimes:jpeg,png,jpg,gif|max:255'
+            'photo' => 'required|image64:jpeg,png,jpg,gif,svg'
         ]);
 
         $fileName = "";
@@ -77,12 +77,12 @@ class ProductsController extends Controller
             'name' => 'required|string|max:255',
             'name_kh' => 'required|string|max:255',
             'price' => 'required|numeric',
-            'photo' => 'required'
         ]);
 
         $photo = $request->{'photo'};
         $currentPhoto = $data->photo;
         if ($currentPhoto != $photo) {
+            $this->validate($request,['photo' => 'required|image64:jpeg,png,jpg,gif,svg']);
             $fileName = now()->format('dmY_His'). '-' .time(). '.' .explode('/', explode(':', substr($photo,0, strpos($photo,";")))[1])[1];
             Image::make($photo)->save(public_path('images/foods/').$fileName);
             $request->merge(['photo' => $fileName]);

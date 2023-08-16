@@ -12,12 +12,14 @@ import {formatDistanceToNow} from "date-fns";
 import DataTable from "datatables.net-vue3";
 import moment from "moment";
 import $ from "jquery";
+import Multiselect from 'vue-multiselect';
 
 window.Form = Form;
 window.axios = axios;
 window.$ = $;
 window.DataTable = DataTable;
 window.moment = moment;
+window.Multiselect = Multiselect;
 window.formatDistanceToNow = formatDistanceToNow;
 
 
