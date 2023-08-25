@@ -13,4 +13,8 @@ class Order extends Model
     protected $primaryKey = 'id';
     protected $fillable = ['order_at', 'table_id', 'user_id', 'customer_id', 'total_pay', 'cash_in'];
 
+public function product()
+    {
+        return $this->belongsToMany(Product::class, 'product_orders', 'order_id', 'product_id');
+    }
 }

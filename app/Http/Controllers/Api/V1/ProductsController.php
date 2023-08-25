@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use Intervention\Image\Facades\Image;
 
 
@@ -61,9 +59,14 @@ class ProductsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        return Product::find($id);
+        if ($id == "all") {
+            return Product::with(['category'])->get();
+        } else {
+            return Product::with(['category'])->where('category_id', $id)->get();
+}
+
     }
 
     /**
@@ -73,7 +76,7 @@ class ProductsController extends Controller
     {
         $data = Product::find($id);
 
-        $this->validate($request,[
+        $this->validate($request, [
             'name' => 'required|string|max:255',
             'name_kh' => 'required|string|max:255',
             'price' => 'required|numeric',
@@ -112,7 +115,7 @@ class ProductsController extends Controller
         }
 
 
-        return response(['message'=>'Successfully update.!','data'=> $data],200);
+        return response(['message' => 'Successfully update.!', 'data' => $data], 200);
     }
 
     /**
@@ -122,10 +125,10 @@ class ProductsController extends Controller
     {
         $data = Product::find($id);
 
-        if($data){
+        if ($data) {
             $data->delete();
         }
 
-        return ['message'=>'Successfully deleted .!', 200];
+        return ['message' => 'Successfully deleted .!', 200];
     }
 }

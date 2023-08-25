@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Route::get('/',function (){
+//    return view('layouts.master');
+//});
 
 Auth::routes();
 Route::controller(App\Http\Controllers\HomeController::class)->group(function () {
@@ -43,6 +46,3 @@ Route::controller(App\Http\Controllers\HomeController::class)->group(function ()
 //});
 //
 //require __DIR__.'/auth.php';
-
-
-

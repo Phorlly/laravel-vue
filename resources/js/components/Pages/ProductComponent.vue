@@ -488,14 +488,13 @@
                 $('#photo').trigger('click');
             },
             async getCategory() {
-                await $.get('api/v1/categories', data => {
+                await $.get('api/v1/category', data => {
                     $.each(data, (index, response) => {
-                        // console.log(response);
-                        // console.log(index);
-                        this.form.category_id = $('#category').append($('<option>').val(response.id).text(response.name_kh));
+                        $('#category').append($('<option>').val(response.id).text(response.text));
                     });
                 }).catch(err => console.warn(err));
             },
         },
-    };</script>
+    };
+</script>
 

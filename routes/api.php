@@ -22,8 +22,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\Api\V1'], f
     Route::apiResource('/customers', CustomersController::class);
     Route::apiResource('/categories',CategoriesController::class);
     Route::apiResource('/products', ProductsController::class);
+Route::get('/category', 'OrderController@getCategory');
+    Route::get('/table', 'OrderController@getTable');
+    Route::post('/order-item', 'OrderController@store');
 });
-
-
-
-
