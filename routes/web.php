@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::controller(App\Http\Controllers\HomeController::class)->group(function () {
-    Route::get('/', 'index');
+    Route::get('/', 'index')->name('app');
     Route::get('/home', 'index')->name('home');
     Route::get('/customer', 'customer')->name('customer');
     Route::get('/category', 'category')->name('category');
